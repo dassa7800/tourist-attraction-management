@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Tourist Attractions</title>
+    <style>
+        /* Add a border and collapse it for the table */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd; /* Add border around table cells */
+            padding: 8px; /* Add padding for spacing */
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2; /* Light gray background for headers */
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9; /* Alternate row colors */
+        }
+        tr:hover {
+            background-color: #f1f1f1; /* Hover effect on rows */
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<h1>Tourist Attractions</h1>
+<a href="/attractions/new">Add New Attraction</a>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Description</th>
+        <th>Entry Fee</th>
+        <th>Type</th>
+        <th>Rating</th>
+        <th>Images</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="attraction : ${attractions}">
+        <td th:text="${attraction.name}"></td>
+        <td th:text="${attraction.location}"></td>
+        <td th:text="${attraction.description}"></td>
+        <td th:text="${attraction.entryFee}"></td>
+        <td th:text="${attraction.type}"></td>
+        <td th:text="${attraction.rating}"></td>
+        <td>
+            <ul>
+                <li th:each="image : ${attraction.images}" th:text="${image}"></li>
+            </ul>
+        </td>
+        <td>
+            <a th:href="@{/attractions/edit/{id}(id=${attraction.id})}">Edit</a>
+            <a th:href="@{/attractions/delete/{id}(id=${attraction.id})}"
+               onclick="return confirm('Are you sure?');">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
