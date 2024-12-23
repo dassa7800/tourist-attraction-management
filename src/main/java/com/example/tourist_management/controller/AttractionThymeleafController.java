@@ -34,12 +34,6 @@ public class AttractionThymeleafController {
         return "attractions/list";
     }
 
-    @GetMapping("/test")
-    public String testAttractions(Model model) {
-        model.addAttribute("attractions", attractionService.getAllAttractions());
-        return "attractions/test";
-    }
-
     @GetMapping("/new")
     public String showAddForm(Model model) {
         model.addAttribute("attraction", new Attraction());
