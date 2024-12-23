@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,126 +9,93 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-        /* Define custom CSS variables for easy color management */
         :root {
-            --navbar-bg: #011C40;  /* Blue for navbar background */
-            --navbar-text: #FFFFFF;  /* White for text and links */
-            --navbar-hover: #11C5D9;  /* Cyan for link hover effect */
-            --navbar-active: #049DD9;  /* Red for active link indicator */
-            --navbar-brand: #94D7F2;  /* Green for brand name */
+            --navbar-bg: #011C40;
+            --navbar-text: #FFFFFF;
+            --navbar-hover: #11C5D9;
+            --navbar-active: #049DD9;
+            --navbar-brand: #94D7F2;
         }
 
-        /* Navbar background color */
         .custom-navbar {
             background-color: var(--navbar-bg);
         }
 
-        /* Styling for navigation links */
         .custom-navbar .nav-link {
-            color: var(--navbar-text) !important;  /* White text for readability */
-            font-size: 0.9rem;  /* Slightly larger font size for better visibility */
-            padding: 0.75rem 2rem;  /* Add padding to links for spacing */
+            color: var(--navbar-text) !important;
+            font-size: 0.9rem;
+            padding: 0.75rem 2rem;
         }
 
-        /* Align nav links to the right */
-        .custom-navbar .navbar-collapse {
-            justify-content: center;  /* Pushes nav items to the right */
-        }
-
-        /* Hover effect on navigation links */
         .custom-navbar .nav-link:hover {
-            color: var(--navbar-hover) !important;  /* Cyan color on hover */
+            color: var(--navbar-hover) !important;
         }
 
-        /* Active link styling to highlight current page */
         .custom-navbar .nav-link.active {
-            color: var(--navbar-active) !important;  /* Red for active link */
-            font-weight: bold;  /* Make active link bold */
+            color: var(--navbar-active) !important;
+            font-weight: bold;
         }
 
-        /* Brand (logo) styling to stand out */
         .custom-navbar .navbar-brand {
-            color: var(--navbar-brand) !important;  /* Green brand color */
-            font-size: 1.2rem;  /* Larger font size for the brand */
-            font-weight: bold;  /* Bold to enhance visibility */
+            color: var(--navbar-brand) !important;
+            font-size: 1.2rem;
+            font-weight: bold;
         }
 
-        /* Toggler button border for mobile view */
         .custom-toggler {
-            border-color: var(--navbar-text);  /* White border for toggler */
+            border-color: var(--navbar-text);
         }
 
-        /* Invert the color of the toggler icon to make it visible on dark backgrounds */
         .custom-navbar .navbar-toggler-icon {
-            filter: invert(1);  /* Makes the hamburger icon white */
+            filter: invert(1);
         }
     </style>
 </head>
 <body>
 
-<!-- Bootstrap JavaScript Bundle (includes Popper.js) for responsive components -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Header Fragment -->
+<div th:fragment="header">
+    <nav class="navbar navbar-expand-lg custom-navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Around Lanka Tours</a>
 
-<!-- Start of Navbar -->
-<nav class="navbar navbar-expand-lg custom-navbar">
-    <div class="container-fluid">
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <!-- Brand/Logo Section (Links to Home) -->
-        <a class="navbar-brand" href="/">Around Lanka Tours</a>
-
-        <!-- Toggler button for mobile responsiveness -->
-        <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>  <!-- Hamburger icon -->
-        </button>
-
-        <!-- Collapsible navbar links for mobile view -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-
-                <!-- Home link - active by default -->
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/trending">Trending</a>
-                </li>
-
-                <!-- Tourist Attractions link -->
-                <li class="nav-item">
-                    <a class="nav-link" href="/tourist-attractions">Tourist Attractions</a>
-                </li>
-
-                <!-- Gallery link -->
-                <li class="nav-item">
-                    <a class="nav-link" href="/gallery">Gallery</a>
-                </li>
-
-                <!-- About Sri Lanka link -->
-                <li class="nav-item">
-                    <a class="nav-link" href="/about-sri-lanka">About Sri Lanka</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/faq">FAQs</a>
-                </li>
-
-                <!-- About Us link -->
-                <li class="nav-item">
-                    <a class="nav-link" href="/about-us">About Us</a>
-                </li>
-
-                <!-- Login link -->
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
-                </li>
-            </ul>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/trending">Trending</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/tourist-attractions">Tourist Attractions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about-sri-lanka">About Sri Lanka</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/faq">FAQs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about-us">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
-<!-- End of Navbar -->
+    </nav>
+</div>
 
 </body>
 </html>

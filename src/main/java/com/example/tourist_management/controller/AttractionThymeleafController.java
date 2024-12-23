@@ -18,6 +18,16 @@ public class AttractionThymeleafController {
         this.attractionService = attractionService;
     }
 
+    @GetMapping("/admin/home")
+    public String adminHome() {
+        return "admin-home";
+    }
+
+    @GetMapping("/user/home")
+    public String userHome() {
+        return "user-home";
+    }
+
     @GetMapping
     public String listAttractions(Model model) {
         model.addAttribute("attractions", attractionService.getAllAttractions());
