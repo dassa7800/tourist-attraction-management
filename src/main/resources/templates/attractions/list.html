@@ -42,7 +42,12 @@
                 <td th:text="${attraction.description}"></td>
                 <td th:text="${attraction.entryFee}"></td>
                 <td th:text="${attraction.type}"></td>
-                <td th:text="${attraction.rating}"></td>
+                <!--<td th:text="${attraction.rating}"></td>-->
+
+                <td>
+                    <span th:text="${attraction.averageRating != null ? #numbers.formatDecimal(attraction.averageRating, 1, 1) : 'N/A'}"></span> / 5
+                </td>
+
                 <td>
                     <ul class="list-unstyled mb-0">
                         <li th:each="image : ${attraction.images}">
@@ -52,12 +57,15 @@
                 </td>
                 <td>
                     <div class="d-flex gap-2 justify-content-center">
-                        <a th:href="@{/attractions/edit/{id}(id=${attraction.id})}" class="btn btn-sm btn-outline-warning">
+                        <a th:href="@{/attractions/details/{id}(id=${attraction.id})}"> <!-- Reviews Button -->
+                            <i class="bi bi-trash"></i> Reviews
+                        </a>
+                        <a th:href="@{/attractions/edit/{id}(id=${attraction.id})}" class="btn btn-sm btn-outline-warning"> <!-- Edit Button -->
                             <i class="bi bi-pencil-square"></i> Edit
                         </a>
                         <a th:href="@{/attractions/delete/{id}(id=${attraction.id})}"
                            class="btn btn-sm btn-outline-danger"
-                           onclick="return confirm('Are you sure you want to delete this attraction?');">
+                           onclick="return confirm('Are you sure you want to delete this attraction?');"> <!-- Delete Button -->
                             <i class="bi bi-trash"></i> Delete
                         </a>
                     </div>

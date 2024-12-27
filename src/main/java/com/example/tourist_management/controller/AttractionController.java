@@ -1,6 +1,7 @@
 package com.example.tourist_management.controller;
 
 import com.example.tourist_management.model.Attraction;
+import com.example.tourist_management.model.Review;
 import com.example.tourist_management.service.AttractionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -38,9 +39,21 @@ public class AttractionController {
      *
      * @return ResponseEntity with a list of all attractions.
      */
+    /*@GetMapping
+    public String showAttractions(Model model) {
+        List<Attraction> attractions = attractionService.getAllAttractions();
+        model.addAttribute("attractions", attractions);
+        return "attractions/list";  // Refers to templates/attractions/list.html
+    }
+    */
     @GetMapping
     public String showAttractions(Model model) {
         List<Attraction> attractions = attractionService.getAllAttractions();
+        // Calculate average ratings for each attraction
+        attractions.forEach(attraction -> {
+            double avgRating = attractionService.calculateAverageRating(attraction.getId());
+            attraction.setAverageRating(avgRating);
+        });
         model.addAttribute("attractions", attractions);
         return "attractions/list";  // Refers to templates/attractions/list.html
     }
@@ -55,6 +68,9 @@ public class AttractionController {
     // Handle form submission for new or updated attraction
     @PostMapping("/save")
     public String saveAttraction(@ModelAttribute("attraction") Attraction attraction) {
+        if (attraction.getId() != null && attraction.getId().isEmpty()){
+            attraction.setId(null); // Force new ID for new attractions
+        }
         attractionService.saveAttraction(attraction);
         return "redirect:/attractions";  // Redirect to attractions list
     }
@@ -88,4 +104,31 @@ public class AttractionController {
         attractionService.deleteAttractionById(id);
         return "redirect:/attractions";  // Redirect to list after deletion
     }
+
+    //Reviews in details page
+    // AttractionController.java
+    @GetMapping("/details/{id}")
+    public String viewAttraction(@PathVariable String id, Model model) {
+        Optional<Attraction> attraction = attractionService.getAttractionById(id);
+        if (attraction.isPresent()) {
+            Attraction detailedAttraction = attraction.get();
+            double avgRating = attractionService.calculateAverageRating(id);
+            detailedAttraction.setAverageRating(avgRating);
+            model.addAttribute("attraction", detailedAttraction);
+            return "attractions/details";
+        }
+        return "redirect:/attractions";
+    }
+
+    @PostMapping("/review")
+    public String addReview(@RequestParam String id,
+                            @RequestParam String user,
+                            @RequestParam String comment,
+                            @RequestParam double rating) {
+        Review review = new Review(user, comment, rating);
+        attractionService.addReview(id, review);
+        return "redirect:/attractions/details/" + id;
+    }
+
+
 }

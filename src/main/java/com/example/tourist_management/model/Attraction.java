@@ -2,6 +2,7 @@ package com.example.tourist_management.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.annotation.Transient;  // For Spring Data (MongoDB)
 
 import java.util.List;
 
@@ -17,6 +18,10 @@ public class Attraction {
     private String type;
     private double rating;
     private List<String> images;
+    private List<Review> reviews;  // field for reviews
+
+    @Transient
+    private double averageRating = 0.0;
 
     // Getters and Setters
     public String getId() {
@@ -81,5 +86,33 @@ public class Attraction {
 
     public void setImages(List<String> images) {
         this.images = images;
+    }
+
+    // Getters and Setters for reviews
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    public Double getAverageRating() {
+        return averageRating;
+    }
+
+    public void setAverageRating(double averageRating) {
+        this.averageRating = averageRating;
+    }
+
+    public void calculateAverageRating() {
+        if (reviews != null && !reviews.isEmpty()) {
+            this.averageRating = reviews.stream()
+                    .mapToDouble(Review::getRating)
+                    .average()
+                    .orElse(0.0);
+        } else {
+            this.averageRating = 0.0;
+        }
     }
 }
