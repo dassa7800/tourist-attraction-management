@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Sri Lanka - Explore the Pearl of the Indian Ocean</title>
+
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <link href="/css/header-styles.css" rel="stylesheet"> <!-- Link to the header CSS -->
-    <link href="/css/footer-styles.css" rel="stylesheet"> <!-- Link to the footer CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom Styles -->
+    <link href="/css/header-styles.css" rel="stylesheet">
+    <link href="/css/footer-styles.css" rel="stylesheet">
 
     <style>
         .hero {
-            background: url('/images/sri-lanka-beach.jpg') no-repeat center center;
+            background: url('/images/sri-lanka-banner.jpg') no-repeat center center;
             background-size: cover;
             height: 500px;
             display: flex;
@@ -24,102 +27,157 @@
         .section-title {
             margin-bottom: 30px;
         }
+        .section-img {
+            max-height: 400px;
+            object-fit: cover;
+        }
     </style>
 </head>
 <body>
 
-<!-- Include Header Fragment -->
+<!-- Header -->
 <div th:replace="fragments/header :: header"></div>
 
-<!-- Hero Section -->
-<div class="hero">
-    <div class="text-center">
-        <h1 class="display-4">Welcome to Sri Lanka</h1>
-        <p class="lead">Discover the Island of Serendipity</p>
+<!-- Banner Section with Text Overlay -->
+<div class="position-relative">
+    <img src="/images/srilanka.jpg" class="img-fluid w-100" alt="Scenic View of Sri Lanka">
+    <div class="position-absolute top-50 start-50 translate-middle text-center text-white">
+        <h2 class="display-5 fw-bold">Sri Lanka</h2>
+        <p class="lead">A Land of Heritage, Beauty, and Adventure</p>
     </div>
 </div>
 
 <!-- Main Content -->
 <div class="container my-5">
+    <!-- Introduction -->
     <div class="text-center mb-5">
-        <h2 class="section-title">Why Visit Sri Lanka?</h2>
-        <p>Sri Lanka is a land of diverse cultures, stunning landscapes, and rich history. Whether you seek adventure, relaxation, or cultural immersion, Sri Lanka has something for every traveler.</p>
+        <h2 class="section-title">Story of Sri Lanka</h2>
+        <p>
+            Sri Lanka, the Pearl of the Indian Ocean, captivates travelers with its breathtaking landscapes, rich cultural heritage, and welcoming people.
+            Whether you are looking for adventure, history, or relaxation, Sri Lanka offers an unforgettable experience.
+        </p>
     </div>
 
-    <!-- Grid Section -->
-    <div class="row">
+    <!-- History Section -->
+    <div class="row align-items-center mb-5">
         <div class="col-md-6">
-            <h3>Brief History</h3>
-            <p>Sri Lanka’s history dates back over 2,500 years, filled with ancient kingdoms, colonial influences, and a vibrant legacy of Buddhism. Ancient cities like Anuradhapura and Polonnaruwa reflect the grandeur of past civilizations.</p>
+            <h3>Ancient History and Heritage</h3>
+            <p>
+                Sri Lanka’s rich history stretches back over 2,500 years, making it one of the oldest continuously inhabited regions in the world. Known as the "Resplendent Isle,"
+                it has been the cradle of ancient civilizations that flourished in harmony with nature and spirituality. The island is home to remarkable UNESCO World Heritage Sites
+                that reveal the grandeur of its past.
+            </p>
+            <p>
+                Among these treasures is <strong>Anuradhapura</strong>, the first capital of Sri Lanka and a sacred city for Buddhists. Its sprawling ruins feature majestic stupas
+                (dagobas), intricately designed monasteries, and the revered <strong>Jaya Sri Maha Bodhi</strong>, a sacred fig tree believed to be grown from a cutting of the tree under
+                which Lord Buddha attained enlightenment.
+            </p>
+            <p>
+                The ancient city of <strong>Polonnaruwa</strong>, another UNESCO site, tells the story of Sri Lanka’s golden age. Visitors can marvel at the <strong>Gal Viharaya</strong>,
+                where stunning rock-carved Buddha statues showcase the exquisite artistry of the period. The city’s well-preserved palaces, reservoirs, and temples highlight the
+                advanced engineering and cultural sophistication of its time.
+            </p>
+            <p>
+                Rising dramatically from the plains, the iconic <strong>Sigiriya Rock Fortress</strong>, also known as the "Lion Rock," is a testament to Sri Lanka’s architectural
+                ingenuity. Built by King Kashyapa in the 5th century, the fortress features breathtaking frescoes, elaborate gardens, and an ancient hydraulic system that still puzzles
+                engineers today. Climbing to the summit rewards visitors with panoramic views of lush landscapes and a sense of awe at this ancient engineering marvel.
+            </p>
+            <p>
+                The profound influence of Buddhism is deeply embedded in Sri Lanka’s heritage. The renowned <strong>Dambulla Cave Temple</strong>, a stunning complex of five
+                caves adorned with intricate murals and golden statues, stands as a beacon of spirituality and artistry. These caves have been a place of worship for over two
+                millennia, showcasing the island’s enduring connection to its spiritual roots.
+            </p>
+            <p>
+                Sri Lanka’s ancient history is not just a tale of kings and kingdoms—it’s a story of resilience, devotion, and cultural evolution. Every temple, fortress, and ruin
+                offers visitors a glimpse into a bygone era, where faith, art, and innovation thrived in perfect harmony.
+            </p>
         </div>
         <div class="col-md-6">
-            <img src="/images/sri-lanka-heritage.jpg" class="img-fluid rounded" alt="Ancient Ruins in Sri Lanka">
+            <img src="/images/history.jpg" class="img-fluid section-img rounded shadow" alt="Ancient Sri Lankan Site">
         </div>
     </div>
 
-    <hr class="my-5">
+    <hr>
 
-    <div class="row">
+    <!-- Nature and Adventure Section -->
+    <div class="row align-items-center mb-5">
         <div class="col-md-6 order-md-2">
-            <h3>Culture and People</h3>
-            <p>Sri Lanka is a melting pot of cultures and ethnicities. From vibrant festivals to exquisite culinary delights, the country’s rich traditions are deeply rooted in its people – warm, hospitable, and ever-welcoming.</p>
+            <h3>Natural Wonders and Wildlife</h3>
+            <p>
+                From the emerald-green highlands of <strong>Ella</strong>, where rolling hills meet cascading waterfalls, to the golden sands of <strong>Mirissa</strong> and
+                <strong>Unawatuna</strong> lapped by the turquoise waters of the Indian Ocean, Sri Lanka’s diverse landscapes captivate the hearts of travelers. The journey through
+                the misty peaks of the central highlands reveals a canvas of lush tea plantations, with <strong>Nuwara Eliya</strong> at its heart—affectionately known as
+                "Little England" for its cool climate, colonial architecture, and vibrant floral gardens. Visitors can stroll through tea estates, savor world-renowned Ceylon tea,
+                and experience the charm of a bygone colonial era.
+            </p>
+            <p>
+                The call of the wild echoes through Sri Lanka’s rich tapestry of national parks and wildlife reserves. <strong>Yala National Park</strong>, famed for its dense
+                leopard population, offers an unforgettable safari experience, where stealthy leopards, elephants, and sloth bears roam freely across untamed savannahs and lagoons.
+                For a breathtaking spectacle of nature, travelers can head to <strong>Minneriya National Park</strong>, where the annual <strong>Elephant Gathering</strong>—one of the largest
+                in the world—draws hundreds of majestic elephants to the shores of ancient reservoirs. Watching these gentle giants in their natural habitat is a humbling and
+                awe-inspiring experience.
+            </p>
+            <p>
+                Beyond the big game, Sri Lanka’s biodiversity thrives in the lush rainforests of <strong>Sinharaja</strong>, a UNESCO World Heritage Site, home to exotic bird species,
+                vibrant reptiles, and endemic flora. Along the southern coast, <strong>Rekawa Beach</strong> offers a front-row seat to the nesting rituals of sea turtles, while
+                whale-watching excursions in <strong>Mirissa</strong> promise sightings of the elusive blue whale—the largest creature on Earth.
+            </p>
+            <p>
+                Whether trekking through misty mountains, lounging on sun-drenched beaches, or embarking on thrilling safaris, Sri Lanka’s diverse natural beauty provides an endless
+                playground for nature enthusiasts and adventurers alike.
+            </p>
         </div>
         <div class="col-md-6 order-md-1">
-            <img src="/images/sri-lanka-culture.jpg" class="img-fluid rounded" alt="Sri Lankan Cultural Festival">
+            <img src="/images/yala.jpg" class="img-fluid section-img rounded shadow" alt="Sri Lankan Nature">
         </div>
     </div>
 
-    <hr class="my-5">
+    <hr>
 
-    <!-- Carousel Section -->
-    <div class="text-center">
-        <h2 class="section-title">Top Tourist Attractions</h2>
-    </div>
-    <div id="touristAttractionsCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="/images/sigiriya.jpg" class="d-block w-100" alt="Sigiriya Rock">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Sigiriya Rock Fortress</h5>
-                    <p>An ancient rock fortress and one of Sri Lanka’s most iconic landmarks.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="/images/galle-fort.jpg" class="d-block w-100" alt="Galle Fort">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Galle Fort</h5>
-                    <p>A UNESCO World Heritage Site blending colonial architecture with tropical beauty.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="/images/ella.jpg" class="d-block w-100" alt="Ella Train Journey">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Ella</h5>
-                    <p>Scenic train rides, lush tea plantations, and breathtaking hiking trails.</p>
-                </div>
-            </div>
+    <!-- Cultural Section -->
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6">
+            <h3>Cultural Experiences and Local Life</h3>
+            <p>
+                Sri Lanka’s culture is a vibrant mosaic woven from centuries of ethnic diversity, colonial influences, and spiritual traditions. The island is home to a harmonious blend of
+                <strong>Sinhalese, Tamil, Muslim, and Burgher</strong> communities, each contributing to a colorful tapestry of customs, languages, and artistic expressions.
+                This rich cultural fusion is brought to life through dazzling festivals, timeless architecture, and cherished rituals that reflect the island’s enduring legacy.
+            </p>
+            <p>
+                A visit to the historic <strong>Galle Fort</strong> offers a journey back in time to the Dutch colonial era, where cobblestone streets are lined with charming cafés, art galleries,
+                and boutique shops set against the backdrop of ancient ramparts. As the sun sets over the Indian Ocean, the fort's coastal walls become a gathering place for both locals
+                and travelers, providing a front-row seat to one of the most picturesque sunsets on the island.
+            </p>
+            <p>
+                No cultural experience in Sri Lanka is complete without witnessing the grandeur of the <strong>Esala Perahera</strong> in Kandy—a mesmerizing festival of lights, elephants adorned
+                in elaborate regalia, and traditional Kandyan dancers. This centuries-old procession, held in honor of the sacred Tooth Relic of the Buddha, is a spectacle of devotion
+                and artistry that draws visitors from across the globe. The rhythmic beats of traditional drums and the flicker of torchbearers create an atmosphere of reverence and celebration.
+            </p>
+            <p>
+                Culinary adventures await those eager to explore the flavors of Sri Lanka’s famed cuisine. From the tantalizing aromas of street-side <strong>kottu roti</strong> to the rich, fragrant
+                curries simmered in coconut milk, each dish tells a story of local ingredients and culinary traditions passed down through generations. Seafood lovers can savor freshly
+                grilled fish on the beaches of <strong>Negombo</strong> or enjoy a fiery <strong>Jaffna crab curry</strong> in the northern provinces, where flavors reflect the island’s coastal abundance.
+            </p>
+            <p>
+                Beyond the cities, Sri Lanka’s true soul is found in its villages and countryside. In the rural heartlands, farmers tend to emerald-green paddy fields, and artisans craft
+                intricate masks, pottery, and handloom textiles using techniques that have stood the test of time. Visitors are welcomed with open arms, often invited to share a meal,
+                participate in traditional ceremonies, or simply engage in heartfelt conversations over a cup of warm Ceylon tea.
+            </p>
+            <p>
+                Whether wandering through bustling markets in <strong>Colombo</strong>, exploring ancient temples in <strong>Anuradhapura</strong>, or attending vibrant local festivals, Sri Lanka offers
+                cultural encounters that are as enriching as they are unforgettable. The island’s people, renowned for their warmth and hospitality, ensure that every traveler leaves with
+                cherished memories and a deep appreciation for the spirit of this remarkable nation.
+            </p>
+
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#touristAttractionsCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#touristAttractionsCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+        <div class="col-md-6">
+            <img src="/images/culture.jpeg" class="img-fluid section-img rounded shadow" alt="Sri Lankan Culture">
+        </div>
     </div>
-
-    <!-- Call to Action -->
-    <div class="text-center my-5">
-        <h2>Ready to Explore?</h2>
-        <p>Embark on your journey to discover the wonders of Sri Lanka. Start planning your adventure today!</p>
-        <a href="/contact" class="btn btn-primary btn-lg">Plan Your Visit</a>
-    </div>
-
 </div>
 
 <!-- Footer -->
-<div class="mt-5" th:insert="fragments/footer :: footer"></div>
+<div th:insert="fragments/footer :: footer"></div>
 
 </body>
 </html>

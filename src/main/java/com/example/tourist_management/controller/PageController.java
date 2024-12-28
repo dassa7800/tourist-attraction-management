@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PageController {
 
+    @GetMapping("/")
+    public String showHome(Model model) {
+        return "static/home";
+    }
+
     @GetMapping("/gallery")
     public String showGallery(Model model) {
         return "static/gallery";
