@@ -27,8 +27,17 @@
 <div th:replace="~{fragments/header :: header}"></div>
 
 <div class="container mt-5">
-    <h1 class="text-primary text-center">Explore Attractions</h1>
-
+    <!-- Title and subtitle for the attractions section -->
+    <div class="gallery-title text-center my-5">
+        <h1 class="display-4 fw-bold text-dark">Explore Sri Lanka</h1>
+        <p class="lead mt-3 text-muted">
+            Immerse yourself in the stunning beauty and rich cultural heritage of Sri Lanka.
+            From ancient ruins and lush tea plantations to golden beaches and vibrant cities,
+            every corner of the island tells a story. Browse through our curated attractions to
+            discover must-see landmarks, hidden gems, and unforgettable experiences.
+            Check entry fees, reviews, and ratings to plan your perfect adventure.
+        </p>
+    </div>
     <div class="row mt-4">
         <div class="col-md-4 mb-4" th:each="attraction : ${attractions}">
             <div class="card card-attraction">
@@ -43,7 +52,7 @@
                         <span th:text="${attraction.averageRating != null ? #numbers.formatDecimal(attraction.averageRating, 1, 1) : 'N/A'}"></span>/5
                     </p>
                     <div class="text-center">
-                        <a th:href="@{/attractions/details/{id}(id=${attraction.id})}" class="btn btn-outline-primary">View Details</a>
+                        <a th:href="@{/attractions/details/{id}(id=${attraction.id})}" class="btn btn-primary">Details/Reviews</a>
                     </div>
                 </div>
             </div>

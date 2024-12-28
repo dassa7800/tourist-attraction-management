@@ -46,7 +46,7 @@ public class AttractionController {
         return "attractions/list";  // Refers to templates/attractions/list.html
     }
     */
-    @GetMapping
+    @GetMapping("/admin")
     public String showAttractions(Model model) {
         List<Attraction> attractions = attractionService.getAllAttractions();
         // Calculate average ratings for each attraction
@@ -56,6 +56,17 @@ public class AttractionController {
         });
         model.addAttribute("attractions", attractions);
         return "attractions/list";  // Refers to templates/attractions/list.html
+    }
+
+    @GetMapping("/view")
+    public String showUserAttractions(Model model) {
+        List<Attraction> attractions = attractionService.getAllAttractions();
+        attractions.forEach(attraction -> {
+            double avgRating = attractionService.calculateAverageRating(attraction.getId());
+            attraction.setAverageRating(avgRating);
+        });
+        model.addAttribute("attractions", attractions);
+        return "attractions/list-user";  // New template for user-only view
     }
 
     // Display form for new attraction
