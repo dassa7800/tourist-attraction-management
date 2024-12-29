@@ -70,20 +70,20 @@ public class AttractionController {
     }
 
     // Display form for new attraction
-    @GetMapping("/new")
+    @GetMapping("/admin/new")
     public String showNewAttractionForm(Model model) {
         model.addAttribute("attraction", new Attraction());
         return "attractions/form";  // Returns form.html for creating new attraction
     }
 
     // Handle form submission for new or updated attraction
-    @PostMapping("/save")
+    @PostMapping("/admin/save")
     public String saveAttraction(@ModelAttribute("attraction") Attraction attraction) {
         if (attraction.getId() != null && attraction.getId().isEmpty()){
             attraction.setId(null); // Force new ID for new attractions
         }
         attractionService.saveAttraction(attraction);
-        return "redirect:/attractions";  // Redirect to attractions list
+        return "redirect:/attractions/admin";  // Redirect to attractions list
     }
     /**
      * Endpoint to fetch details of a specific attraction by its ID.
@@ -93,14 +93,14 @@ public class AttractionController {
      */
 
     // Display form for editing existing attraction
-    @GetMapping("/edit/{id}")
+    @GetMapping("/admin/edit/{id}")
     public String showEditAttractionForm(@PathVariable String id, Model model) {
         Optional<Attraction> attraction = attractionService.getAttractionById(id);
         if (attraction.isPresent()) {
             model.addAttribute("attraction", attraction.get());
             return "attractions/form";  // Reuse form.html for editing
         } else {
-            return "redirect:/attractions";  // Redirect if attraction not found
+            return "redirect:/attractions/admin";  // Redirect if attraction not found
         }
     }
     /**
@@ -110,14 +110,13 @@ public class AttractionController {
      * @return ResponseEntity with no content (204) after successful deletion.
      */
     // Delete attraction by ID
-    @GetMapping("/delete/{id}")
+    @GetMapping("/admin/delete/{id}")
     public String deleteAttraction(@PathVariable String id) {
         attractionService.deleteAttractionById(id);
-        return "redirect:/attractions";  // Redirect to list after deletion
+        return "redirect:/attractions/admin";  // Redirect to list after deletion
     }
 
-    //Reviews in details page
-    // AttractionController.java
+    //Reviews and details in details page for users
     @GetMapping("/details/{id}")
     public String viewAttraction(@PathVariable String id, Model model) {
         Optional<Attraction> attraction = attractionService.getAttractionById(id);
@@ -128,9 +127,22 @@ public class AttractionController {
             model.addAttribute("attraction", detailedAttraction);
             return "attractions/details";
         }
-        return "redirect:/attractions";
+        return "redirect:/attractions/view";
     }
 
+    //Reviews and details page for admin
+    @GetMapping("/admin/details/{id}")
+    public String viewadminAttraction(@PathVariable String id, Model model) {
+        Optional<Attraction> attraction = attractionService.getAttractionById(id);
+        if (attraction.isPresent()) {
+            Attraction detailedAttraction = attraction.get();
+            double avgRating = attractionService.calculateAverageRating(id);
+            detailedAttraction.setAverageRating(avgRating);
+            model.addAttribute("attraction", detailedAttraction);
+            return "attractions/details-admin";
+        }
+        return "redirect:/attractions/admin";
+    }
     @PostMapping("/review")
     public String addReview(@RequestParam String id,
                             @RequestParam String user,

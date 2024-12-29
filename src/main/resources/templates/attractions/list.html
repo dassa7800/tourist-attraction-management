@@ -17,7 +17,7 @@
     <!-- Page Title and Add Button -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="h3 text-primary">Tourist Attractions</h1>
-        <a href="/attractions/new" class="btn btn-primary">
+        <a href="/attractions/admin/new" class="btn btn-primary">
             <i class="bi bi-plus-circle me-1"></i> Add New Attraction
         </a>
     </div>
@@ -59,13 +59,13 @@
                 </td>
                 <td>
                     <div class="d-flex gap-2 justify-content-center">
-                        <a th:href="@{/attractions/details/{id}(id=${attraction.id})}"> <!-- Reviews Button -->
+                        <a th:href="@{/attractions/admin/details/{id}(id=${attraction.id})}"> <!-- Reviews Button -->
                             <i class="bi bi-trash"></i> Reviews
                         </a>
-                        <a th:href="@{/attractions/edit/{id}(id=${attraction.id})}" class="btn btn-sm btn-outline-warning"> <!-- Edit Button -->
+                        <a th:href="@{/attractions/admin/edit/{id}(id=${attraction.id})}" class="btn btn-sm btn-outline-warning"> <!-- Edit Button -->
                             <i class="bi bi-pencil-square"></i> Edit
                         </a>
-                        <a th:href="@{/attractions/delete/{id}(id=${attraction.id})}"
+                        <a th:href="@{/attractions/admin/delete/{id}(id=${attraction.id})}"
                            class="btn btn-sm btn-outline-danger"
                            onclick="return confirm('Are you sure you want to delete this attraction?');"> <!-- Delete Button -->
                             <i class="bi bi-trash"></i> Delete
