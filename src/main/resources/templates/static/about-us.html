@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Around Lanka Tours</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="/css/header-styles.css" rel="stylesheet">
+    <link href="/css/footer-styles.css" rel="stylesheet">
+
+    <style>
+        .hero-banner {
+            background: url('/images/banner4.webp') no-repeat center center;
+            background-size: cover;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+        .hero-banner h1 {
+            font-size: 4rem;
+        }
+        .section-title {
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+        .value-icon {
+            font-size: 3rem;
+            color: #049DD9;
+        }
+        .testimonial {
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Header Fragment -->
+<div th:replace="fragments/header :: header"></div>
+
+<!-- Hero Section -->
+<div class="hero-banner">
+    <div class="text-center">
+        <h2>Discover Sri Lanka with Us</h2>
+        <h1>Around Lanka Tours</h1>
+        <p class="lead">Where Culture Meets Adventure</p>
+    </div>
+</div>
+
+<!-- Main Content Section -->
+<div class="container my-5">
+    <div class="text-center mb-5">
+        <h2 class="section-title">Who We Are</h2>
+        <p>
+            At <strong>Around Lanka Tours</strong>, we are passionate about sharing the magic of Sri Lanka. From pristine beaches to ancient ruins, we craft immersive travel
+            experiences that capture the island’s essence. Whether you are an adventurer, culture seeker, or nature lover, we are here to guide you on an unforgettable journey.
+        </p>
+    </div>
+
+    <!-- Our Values Section -->
+    <div class="row text-center mb-5">
+        <div class="col-md-4">
+            <div class="value-icon">🌿</div>
+            <h3 class="mt-3">Sustainability</h3>
+            <p>We prioritize eco-friendly practices and work to preserve Sri Lanka’s natural beauty for future generations.</p>
+        </div>
+        <div class="col-md-4">
+            <div class="value-icon">🤝</div>
+            <h3 class="mt-3">Authenticity</h3>
+            <p>We believe in genuine experiences, connecting travelers with local traditions, communities, and hidden gems.</p>
+        </div>
+        <div class="col-md-4">
+            <div class="value-icon">🌍</div>
+            <h3 class="mt-3">Global Recognition</h3>
+            <p>Trusted by travelers worldwide, we have built a reputation for excellence and reliability in curating bespoke tours.</p>
+        </div>
+    </div>
+
+    <!-- Our Mission Section -->
+    <div class="text-center mb-5">
+        <h2 class="section-title">Our Mission</h2>
+        <p>
+            Our mission is to showcase the unparalleled beauty and heritage of Sri Lanka while ensuring that every guest experiences
+            the island’s charm through personalized and meaningful tours. We are committed to delivering unforgettable memories.
+        </p>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div class="text-center mb-5">
+        <h2 class="section-title">What Our Travelers Say</h2>
+    </div>
+    <div class="row text-center">
+        <div class="col-md-4">
+            <p class="testimonial">
+                "Around Lanka Tours provided us with an unforgettable adventure through Sri Lanka! From start to finish, the experience was seamless."
+            </p>
+            <strong>- Sarah, UK</strong>
+        </div>
+        <div class="col-md-4">
+            <p class="testimonial">
+                "The guides were knowledgeable, and the destinations felt authentic and untouched. Can’t wait to return!"
+            </p>
+            <strong>- Tom, Australia</strong>
+        </div>
+        <div class="col-md-4">
+            <p class="testimonial">
+                "A perfect blend of culture, nature, and luxury. We felt at home throughout the trip. Highly recommended!"
+            </p>
+            <strong>- Priya, India</strong>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="text-center my-5">
+        <h2>Start Your Journey Today</h2>
+        <p>Let us craft your dream itinerary. Explore Sri Lanka with Around Lanka Tours!</p>
+    </div>
+</div>
+
+<!-- Footer Fragment -->
+<div th:insert="fragments/footer :: footer"></div>
+
+</body>
+</html>

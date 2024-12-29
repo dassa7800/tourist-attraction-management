@@ -1,0 +1,78 @@
+:root {
+    --footer-bg: #011C40;  /* Background color for footer */
+    --footer-text: #FFFFFF;  /* Default text color */
+    --footer-hover: #11C5D9;  /* Hover color for footer links */
+    --footer-brand: #049DD9;  /* Brand color for headings */
+    --footer-border: #94D7F2;  /* Border color for separation */
+}
+
+/* Main Footer Container */
+.custom-footer {
+    background-color: var(--footer-bg);
+    padding: 2rem 0;  /* Padding for spacing above and below */
+    text-align: center;  /* Center align all footer content */
+}
+
+/* Footer Branding (Top Section) */
+.custom-footer .footer-brand {
+    color: var(--footer-brand);
+    font-size: 1.5rem;  /* Slightly larger font for the brand */
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+/* Footer Text and Links */
+.custom-footer .footer-text,
+.custom-footer .footer-links a {
+    color: var(--footer-text);
+    font-size: .8rem;
+    text-decoration: none;
+    display: block;  /* Each link or text is in its block */
+}
+
+/* Links Hover Effect */
+.custom-footer .footer-links a:hover {
+    color: var(--footer-hover);
+    text-decoration: underline;
+}
+
+/* Footer Headings */
+.custom-footer h5 {
+    color: var(--footer-brand);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+/* Responsive Footer Columns */
+.footer-columns {
+    display: flex;
+    justify-content: space-around;  /* Center columns horizontally */
+    flex-wrap: wrap;  /* Wrap columns on smaller screens */
+    gap: 4rem;  /* Add spacing between columns */
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+    margin-top: 1rem;
+    padding: 1rem 0;
+    background-color: #000;  /* Slightly different color for contrast */
+    color: #ccc;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+/* Responsive Padding and Text Adjustment */
+@media (max-width: 768px) {
+    .custom-footer {
+        padding: 2rem 1rem;  /* Adjust padding for smaller screens */
+    }
+
+    .custom-footer .footer-text,
+    .custom-footer .footer-links a {
+        font-size: 0.9rem;  /* Smaller font size for mobile devices */
+    }
+
+    .custom-footer h5 {
+        font-size: 1rem;  /* Adjust heading size for mobile */
+    }
+}
